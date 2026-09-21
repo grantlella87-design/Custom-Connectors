@@ -1,0 +1,4 @@
+# Ignore PAC temporary files
+*.log
+*.tmp
+.vscode/
