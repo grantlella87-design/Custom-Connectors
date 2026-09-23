@@ -38,20 +38,71 @@ namespace CdpHelpers.Tests
       "properties": {
         "fieldNum": {
           "title": "",
-          "type": "integer"
+          "type": "integer",
+          "x-ms-capabilities": {
+            "filterFunctions": [
+              "eq",
+              "ne",
+              "lt",
+              "le",
+              "gt",
+              "ge",
+              "and",
+              "or",
+              "top"
+            ]
+          },
+          "x-ms-sort": "none"
         },
         "fieldStr": {
           "title": "",
-          "type": "string"
+          "type": "string",
+          "x-ms-capabilities": {
+            "filterFunctions": [
+              "eq",
+              "ne",
+              "lt",
+              "le",
+              "gt",
+              "ge",
+              "and",
+              "or",
+              "top"
+            ]
+          },
+          "x-ms-sort": "none"
         }
       },
       "type": "object"
     },
     "type": "array"
   },
-  "x-ms-permission": "read-write"
+  "x-ms-capabilities": {
+    "filterFunctionSupport": [
+      "eq",
+      "ne",
+      "lt",
+      "le",
+      "gt",
+      "ge",
+      "and",
+      "or",
+      "top"
+    ],
+    "filterRestrictions": {
+      "filterable": true,
+      "nonFilterableProperties": []
+    },
+    "isOnlyServerPagable": false,
+    "odataVersion": 3,
+    "sortRestrictions": {
+      "sortable": true,
+      "unsortableProperties": []
+    }
+  },
+  "x-ms-permission": "read-only"
 }
-""", json);
+""", json, ignoreLineEndingDifferences: true);
         }
 
         /// <summary>
@@ -76,20 +127,36 @@ namespace CdpHelpers.Tests
           "type": "string",
           "x-ms-capabilities": {
             "filterFunctions": [
-              "eq"
+              "eq",
+              "ne",
+              "lt",
+              "le",
+              "gt",
+              "ge",
+              "and",
+              "or",
+              "top"
             ]
           },
-          "x-ms-sort": "asc,desc"
+          "x-ms-sort": "none"
         },
         "field2": {
           "title": "Display2",
           "type": "string",
           "x-ms-capabilities": {
             "filterFunctions": [
-              "eq"
+              "eq",
+              "ne",
+              "lt",
+              "le",
+              "gt",
+              "ge",
+              "and",
+              "or",
+              "top"
             ]
           },
-          "x-ms-sort": "asc,desc"
+          "x-ms-sort": "none"
         }
       },
       "type": "object"
@@ -98,15 +165,31 @@ namespace CdpHelpers.Tests
   },
   "x-ms-capabilities": {
     "filterFunctionSupport": [
-      "eq"
+      "eq",
+      "ne",
+      "lt",
+      "le",
+      "gt",
+      "ge",
+      "and",
+      "or",
+      "top"
     ],
+    "filterRestrictions": {
+      "filterable": true,
+      "nonFilterableProperties": []
+    },
     "isOnlyServerPagable": false,
-    "odataVersion": 3
+    "odataVersion": 3,
+    "sortRestrictions": {
+      "sortable": true,
+      "unsortableProperties": []
+    }
   },
-  "x-ms-permission": "read-write"
+  "x-ms-permission": "read-only"
 }
 """;
-            Assert.Equal(jsonExpected, json);
+            Assert.Equal(jsonExpected, json, ignoreLineEndingDifferences: true);
         }
     }
 

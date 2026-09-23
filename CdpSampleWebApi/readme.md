@@ -15,10 +15,17 @@ The front-end receives has a [ITableProviderFactory](./Services/ITableProvider.c
 - decode it into a property bag that's used to establish a client for the Saas. 
 - translates betweent the CDP protocol and the underlying client. 
 
-## Testing 
+## Testing
 
+Run the API locally (listens on http://localhost:5008 with the `http` profile):
 
+```
+dotnet run --project CdpSampleWebApi
+```
 
+Check it is up with `GET /$health`, then browse `$metadata.json/datasets`.
+Unit tests for the shared helpers live in `Tests/CdpHelpers.Tests`:
 
-
-
+```
+dotnet test Tests/CdpHelpers.Tests
+```

@@ -17,7 +17,8 @@ Environment ID:
 - `CdpHelpers/` - shared library the Web API builds on (Power Fx `RecordType` <-> CDP protocol).
 - `PowerPlatformArtifacts/` - connector definition (`apiDefinition.swagger.json`, `apiProperties.json`,
   `settings.json`) used to register the V10 connector with Power Platform.
-- `Tests/` - unit tests for `CdpHelpers` and end-to-end tests for the Web API.
+- `Tests/CdpHelpers.Tests/` - unit tests for `CdpHelpers`.
+- `PowerFxBuild.props` - shared Power Fx / OData package versions imported by both projects.
 
 ## Build and run
 
@@ -28,6 +29,8 @@ dotnet build CdpSampleWebApi.sln
 dotnet run --project CdpSampleWebApi
 dotnet test Tests/CdpHelpers.Tests
 ```
+
+The API listens on http://localhost:5008 by default; `GET /$health` confirms it is running.
 
 Publish for Windows / IIS or a Windows service:
 
