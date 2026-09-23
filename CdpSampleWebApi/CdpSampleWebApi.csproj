@@ -20,6 +20,9 @@
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="CdpSampleWebApi.Tests" />
+  </ItemGroup>
+  <ItemGroup>
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 </Project>

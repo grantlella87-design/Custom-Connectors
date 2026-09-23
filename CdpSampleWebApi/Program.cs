@@ -42,6 +42,7 @@ namespace CdpSampleWebApi
             builder.Services.AddHttpClient("ArcGIS");
             builder.Services.AddHttpClient("ArcGISAuth");
             builder.Services.AddSingleton<ArcGisOAuthTokenProvider>();
+            builder.Services.AddTransient<ArcGisRestClient>();
             builder.Services.AddSingleton<ITableProviderFactory, ArcGisTableProviderFactory>();
 
             var app = builder.Build();

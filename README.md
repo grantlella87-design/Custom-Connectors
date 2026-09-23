@@ -1,7 +1,8 @@
 # Custom Connectors
 
-Power Platform custom connectors repository: **National Grid GIS Enhanced V10**, a CDP-enhanced
-(tabular) connector over National Grid GIS data. Protocol docs: https://aka.ms/PowerFxCDP
+Power Platform custom connectors repository: **National Grid GIS Enhanced V13 Print**, a CDP-enhanced
+(tabular) connector over National Grid GIS data with geoprocessing, project-map grid/export, spatial query
+and forty-scale CustomPrint PDF actions. Protocol docs: https://aka.ms/PowerFxCDP
 
 ## Environment
 
@@ -12,12 +13,14 @@ Environment ID:
 
 ## Layout
 
-- `CdpSampleWebApi/` - ASP.NET Core Web API implementing the CDP protocol (ArcGIS table provider,
-  GIS lookup, geoprocessing and health endpoints). See its [readme](CdpSampleWebApi/readme.md).
+- `CdpSampleWebApi/` - ASP.NET Core Web API implementing the CDP protocol and the connector actions:
+  table query, GIS lookups, geoprocessing (`gis/geoprocessing`), project maps (`gis/maps/grid`,
+  `gis/maps/export-page`), spatial query (`gis/spatial-query`) and print (`gis/print/generateMapPdf`,
+  `gis/print/layout-info`). See its [readme](CdpSampleWebApi/readme.md).
 - `CdpHelpers/` - shared library the Web API builds on (Power Fx `RecordType` <-> CDP protocol).
 - `PowerPlatformArtifacts/` - connector definition (`apiDefinition.swagger.json`, `apiProperties.json`,
-  `settings.json`) used to register the V10 connector with Power Platform.
-- `Tests/CdpHelpers.Tests/` - unit tests for `CdpHelpers`.
+  `settings.json`) used to register the V13 connector with Power Platform.
+- `Tests/` - unit tests for `CdpHelpers` and for the V13 map/print/spatial-query logic.
 - `PowerFxBuild.props` - shared Power Fx / OData package versions imported by both projects.
 
 ## Build and run
@@ -27,7 +30,7 @@ Requires the .NET SDK pinned in `global.json` (8.0.425).
 ```
 dotnet build CdpSampleWebApi.sln
 dotnet run --project CdpSampleWebApi
-dotnet test Tests/CdpHelpers.Tests
+dotnet test CdpSampleWebApi.sln
 ```
 
 The API listens on http://localhost:5008 by default; `GET /$health` confirms it is running.
@@ -40,8 +43,8 @@ dotnet publish CdpSampleWebApi -c Release -r win-x64 -o publish/win-x64
 
 ## Registering the connector
 
-`PowerPlatformArtifacts/settings.json` is a `paconn` settings file. From that folder, update the existing connector with:
+`PowerPlatformArtifacts/settings.json` is a `paconn` settings file; see
+[PowerPlatformArtifacts/readme.md](PowerPlatformArtifacts/readme.md) for creating or updating the V13 connector.
 
-```
-paconn update --settings settings.json
-```
+The API signs in to ArcGIS Enterprise interactively (OAuth, token cached with Windows DPAPI), so run it on
+the Windows gateway host.

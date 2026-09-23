@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerPlatformArtifacts", "P
 		PowerPlatformArtifacts\settings.json = PowerPlatformArtifacts\settings.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CdpSampleWebApi.Tests", "Tests\CdpSampleWebApi.Tests\CdpSampleWebApi.Tests.csproj", "{58BAE674-77E4-414E-89E6-E97B27D5C9F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,12 +49,17 @@ Global
 		{BCA7D531-F746-4566-B573-BF2AC36978C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCA7D531-F746-4566-B573-BF2AC36978C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCA7D531-F746-4566-B573-BF2AC36978C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58BAE674-77E4-414E-89E6-E97B27D5C9F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58BAE674-77E4-414E-89E6-E97B27D5C9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58BAE674-77E4-414E-89E6-E97B27D5C9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58BAE674-77E4-414E-89E6-E97B27D5C9F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BCA7D531-F746-4566-B573-BF2AC36978C5} = {B57C4A2E-7C3E-4A8D-9DD1-383758735A1A}
+		{58BAE674-77E4-414E-89E6-E97B27D5C9F7} = {B57C4A2E-7C3E-4A8D-9DD1-383758735A1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD3D15C4-8E2D-464E-B48E-4266ECC81508}

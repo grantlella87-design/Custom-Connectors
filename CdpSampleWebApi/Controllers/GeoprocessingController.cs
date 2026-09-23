@@ -73,6 +73,7 @@ namespace CdpSampleWebApi
         }
 
         [HttpPost("gp/run")]
+        [HttpPost("run")]
         public Task<IActionResult> Run([FromBody] Dictionary<string, JsonElement> request, CancellationToken cancellationToken)
         {
             if (!request.TryGetValue("operation", out var operationElement) || operationElement.ValueKind != JsonValueKind.String)

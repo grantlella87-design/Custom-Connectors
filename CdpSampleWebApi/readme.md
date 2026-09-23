@@ -24,8 +24,8 @@ dotnet run --project CdpSampleWebApi
 ```
 
 Check it is up with `GET /$health`, then browse `$metadata.json/datasets`.
-Unit tests for the shared helpers live in `Tests/CdpHelpers.Tests`:
+Unit tests live under `Tests/`:
 
 ```
-dotnet test Tests/CdpHelpers.Tests
+dotnet test CdpSampleWebApi.sln
 ```
