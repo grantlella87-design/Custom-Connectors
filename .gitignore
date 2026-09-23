@@ -2,3 +2,8 @@
 *.log
 *.tmp
 .vscode/
+
+# Build output
+bin/
+obj/
+publish/

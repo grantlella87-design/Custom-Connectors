@@ -1,6 +1,0 @@
-{
-  "endpoint": "http://127.0.0.1:5008",
-  "dataset": "prod",
-  "urlprefix": "",
-  "tablename": "aHR0cHM6Ly9naXMubmF0aW9uYWxncmlkLmNvbS9hcmNnaXMvcmVzdC9zZXJ2aWNlcy9NQS9NYXRlcmlhbF9WaWV3X01BL01hcFNlcnZlci8yMw"
-}
