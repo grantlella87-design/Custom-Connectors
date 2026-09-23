@@ -1,0 +1,28 @@
+Request:
+  Method: GET
+  Url: http://127.0.0.1:5008/datasets/prod/tables/aHR0cHM6Ly9naXMubmF0aW9uYWxncmlkLmNvbS9hcmNnaXMvcmVzdC9zZXJ2aWNlcy9NQS9NYXRlcmlhbF9WaWV3X01BL01hcFNlcnZlci8yMw/items?api-version=2015-09-01&$filter=BEGINX+eq+760886.17915615&$top=10
+Response:
+  StatusCode: 200
+  Body: |-
+    {
+      "value": [
+        {
+          "BEGINX": 760886.17915615,
+          "BEGINY": -172098.84816284,
+          "CUSTOMLENGTH": 0,
+          "DIMLENGTH": 8.70499705,
+          "DIMTYPE": 0,
+          "DIMX": 760886.17915615,
+          "DIMY": -172098.84816284,
+          "ENDX": 760894.73589757,
+          "ENDY": -172097.24842851,
+          "EXTANGLE": 1.57079633,
+          "OBJECTID": 1,
+          "SHAPE.STArea()": 10.636365369587821,
+          "SHAPE.STLength()": 20.8967793231382,
+          "STYLEID": 1,
+          "TEXTANGLE": 0,
+          "USECUSTOMLENGTH": 0
+        }
+      ]
+    }

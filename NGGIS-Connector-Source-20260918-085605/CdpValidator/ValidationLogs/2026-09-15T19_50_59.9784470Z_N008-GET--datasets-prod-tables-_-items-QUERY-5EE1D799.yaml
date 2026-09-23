@@ -1,0 +1,40 @@
+Request:
+  Method: GET
+  Url: http://127.0.0.1:5008/datasets/prod/tables/aHR0cHM6Ly9naXMubmF0aW9uYWxncmlkLmNvbS9hcmNnaXMvcmVzdC9zZXJ2aWNlcy9NQS9NYXRlcmlhbF9WaWV3X01BL01hcFNlcnZlci8yMw/items?api-version=2015-09-01&$top=10&$select=BEGINX
+Response:
+  StatusCode: 200
+  Body: |-
+    {
+      "value": [
+        {
+          "BEGINX": 760886.17915615
+        },
+        {
+          "BEGINX": 1040516.03754623
+        },
+        {
+          "BEGINX": 864610.56685132
+        },
+        {
+          "BEGINX": 894567.5466354
+        },
+        {
+          "BEGINX": 700332.83143106
+        },
+        {
+          "BEGINX": 669063.64987506
+        },
+        {
+          "BEGINX": 892558.7061649
+        },
+        {
+          "BEGINX": 669245.72464214
+        },
+        {
+          "BEGINX": 757587.89408606
+        },
+        {
+          "BEGINX": 745502.00027891
+        }
+      ]
+    }

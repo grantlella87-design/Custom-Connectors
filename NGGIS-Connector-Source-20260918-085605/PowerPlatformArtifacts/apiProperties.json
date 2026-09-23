@@ -1,0 +1,67 @@
+{
+  "properties": {
+    "capabilities": [
+      "tabular",
+      "gateway"
+    ],
+    "interfaces": {
+      "CDPTabular1": {
+        "revisions": {
+          "1": {
+            "baseUrl": "/",
+            "status": "Production"
+          }
+        }
+      }
+    },
+    "connectionParameters": {
+      "authType": {
+        "type": "string",
+        "allowedValues": [
+          {
+            "value": "anonymous"
+          }
+        ],
+        "uiDefinition": {
+          "displayName": "Authentication Type",
+          "description": "Authentication type for the local GIS service.",
+          "tooltip": "Select anonymous authentication.",
+          "constraints": {
+            "tabIndex": 1,
+            "required": "true",
+            "hidden": "false",
+            "allowedValues": [
+              {
+                "text": "Anonymous",
+                "value": "anonymous"
+              }
+            ],
+            "capability": [
+              "gateway"
+            ]
+          }
+        }
+      },
+      "gateway": {
+        "type": "gatewaySetting",
+        "gatewaySettings": {
+          "dataSourceType": "CustomConnector",
+          "connectionDetails": []
+        },
+        "uiDefinition": {
+          "displayName": "Gateway",
+          "description": "Select the gateway installed on the local GIS API host.",
+          "tooltip": "Gateway used to reach the locally hosted enhanced GIS service.",
+          "constraints": {
+            "tabIndex": 2,
+            "required": "true",
+            "capability": [
+              "gateway"
+            ]
+          }
+        }
+      }
+    },
+    "iconBrandColor": "#007EE6"
+  }
+}

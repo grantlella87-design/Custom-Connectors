@@ -1,0 +1,9 @@
+{
+  "connectorId": "shared_national-20grid-20gis-20enhanced-20v2-5f934342f-7c390a7141d0c8c3",
+  "environment": "974a4409-f22c-e0f8-a512-9f4294f8d209",
+  "apiProperties": "apiProperties.json",
+  "apiDefinition": "apiDefinition.swagger.json",
+  "icon": null,
+  "powerAppsUrl": "https://api.powerapps.com",
+  "powerAppsApiVersion": "2016-11-01"
+}

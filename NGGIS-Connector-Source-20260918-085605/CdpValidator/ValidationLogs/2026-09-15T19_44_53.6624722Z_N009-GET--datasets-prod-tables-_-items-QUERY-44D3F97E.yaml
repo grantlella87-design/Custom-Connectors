@@ -1,0 +1,50 @@
+Request:
+  Method: GET
+  Url: http://127.0.0.1:5008/datasets/prod/tables/aHR0cHM6Ly9naXMubmF0aW9uYWxncmlkLmNvbS9hcmNnaXMvcmVzdC9zZXJ2aWNlcy9NQS9NYXRlcmlhbF9WaWV3X01BL01hcFNlcnZlci8yMw/items?api-version=2015-09-01&$top=10&$select=BEGINX%2CBEGINY
+Response:
+  StatusCode: 200
+  Body: |-
+    {
+      "value": [
+        {
+          "BEGINX": 760886.17915615,
+          "BEGINY": -172098.84816284
+        },
+        {
+          "BEGINX": 1040516.03754623,
+          "BEGINY": -449318.53814493
+        },
+        {
+          "BEGINX": 864610.56685132,
+          "BEGINY": -118530.98613868
+        },
+        {
+          "BEGINX": 894567.5466354,
+          "BEGINY": -110816.80274818
+        },
+        {
+          "BEGINX": 700332.83143106,
+          "BEGINY": -163891.30191393
+        },
+        {
+          "BEGINX": 669063.64987506,
+          "BEGINY": -161193.35061693
+        },
+        {
+          "BEGINX": 892558.7061649,
+          "BEGINY": -116662.04433851
+        },
+        {
+          "BEGINX": 669245.72464214,
+          "BEGINY": -161225.71210076
+        },
+        {
+          "BEGINX": 757587.89408606,
+          "BEGINY": -165055.85503101
+        },
+        {
+          "BEGINX": 745502.00027891,
+          "BEGINY": -217309.74232092
+        }
+      ]
+    }

@@ -1,0 +1,498 @@
+Request:
+  Method: GET
+  Url: http://127.0.0.1:5008/$metadata.json/datasets/prod/tables/aHR0cHM6Ly9naXMubmF0aW9uYWxncmlkLmNvbS9hcmNnaXMvcmVzdC9zZXJ2aWNlcy9NQS9NYXRlcmlhbF9WaWV3X01BL01hcFNlcnZlci8yMw?api-version=2015-09-01
+Response:
+  StatusCode: 200
+  Body: |-
+    {
+      "name": "aHR0cHM6Ly9naXMubmF0aW9uYWxncmlkLmNvbS9hcmNnaXMvcmVzdC9zZXJ2aWNlcy9NQS9NYXRlcmlhbF9WaWV3X01BL01hcFNlcnZlci8yMw",
+      "x-ms-permission": "read-only",
+      "x-ms-capabilities": {
+        "sortRestrictions": {
+          "sortable": true,
+          "unsortableProperties": []
+        },
+        "filterRestrictions": {
+          "filterable": true,
+          "nonFilterableProperties": []
+        },
+        "isOnlyServerPagable": false,
+        "serverPagingOptions": null,
+        "filterFunctionSupport": [
+          "eq",
+          "ne",
+          "lt",
+          "le",
+          "gt",
+          "ge",
+          "and",
+          "or",
+          "top"
+        ],
+        "odataVersion": 3
+      },
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "BEGINX": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "BEGINY": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "CUSTOMLENGTH": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "DIMDISPLAY": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "DIMLENGTH": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "DIMTYPE": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "DIMX": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "DIMY": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "ENDX": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "ENDY": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "EXTANGLE": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "EXTDISPLAY": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "MARKERDISPLAY": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "OBJECTID": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "SHAPE": {
+              "title": "",
+              "description": null,
+              "type": "string",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "SHAPE.STArea()": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "SHAPE.STLength()": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "STYLEID": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "TEXTANGLE": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "TEXTX": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "TEXTY": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "USECUSTOMLENGTH": {
+              "title": "",
+              "description": null,
+              "type": "integer",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "created_user": {
+              "title": "",
+              "description": null,
+              "type": "string",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            },
+            "last_edited_user": {
+              "title": "",
+              "description": null,
+              "type": "string",
+              "x-ms-sort": "none",
+              "x-ms-capabilities": {
+                "filterFunctions": [
+                  "eq",
+                  "ne",
+                  "lt",
+                  "le",
+                  "gt",
+                  "ge",
+                  "and",
+                  "or",
+                  "top"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }

@@ -1,0 +1,14 @@
+Request:
+  Method: GET
+  Url: http://127.0.0.1:5008/datasets
+Response:
+  StatusCode: 200
+  Body: |-
+    {
+      "value": [
+        {
+          "Name": "prod",
+          "DisplayName": "National Grid GIS PROD"
+        }
+      ]
+    }
