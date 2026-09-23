@@ -1,9 +1,0 @@
-Request:
-  Method: GET
-  Url: http://127.0.0.1:5008/$metadata.json/datasets/prod/tables/da649a6b1969425fbe56ca576b1c2e90?api-version=2015-09-01
-Response:
-  StatusCode: 404
-  Body: |-
-    {
-      "message": "Invalid PROD ArcGIS table identifier."
-    }
