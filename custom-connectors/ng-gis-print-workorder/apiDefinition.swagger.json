@@ -1,0 +1,576 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "National Grid GIS Enhanced V13 Print",
+    "description": "Prints proposed main project maps from ArcGIS. Builds a forty scale grid index sized from the layout map frame, keeps the cells that intersect a buffer around the proposed main, and prints one sheet per cell. Submit and poll actions are used so no action exceeds the connector timeout.",
+    "contact": {
+      "name": "National Grid Gas Planning and Design Engineering",
+      "email": "Grant.Lella@nationalgrid.com"
+    }
+  },
+  "host": "127.0.0.1:5008",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/gis/print/workorder/towncode": {
+      "get": {
+        "summary": "Get town code for a work order",
+        "description": "Intersects the proposed main against the Town Boundary layer and returns the town code, town name and division.",
+        "operationId": "GetTownCode",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "workOrderId",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Work order identifier, for example 1513700.",
+            "x-ms-summary": "Work order ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TownCodeResponse"
+            }
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/gis/print/workorder/grid": {
+      "post": {
+        "summary": "Compute the grid index",
+        "description": "Returns the grid cells that intersect the buffered proposed main. Leave Dry run set to true to preview the page count before printing.",
+        "operationId": "ComputeGrid",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GridRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GridResponse"
+            }
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/gis/print/workorder/grid/submit": {
+      "post": {
+        "summary": "Submit print jobs for all pages",
+        "description": "Submits one print job per grid cell and returns the job identifiers immediately. Poll each job with Get print job status.",
+        "operationId": "SubmitGridPrint",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GridRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubmitResponse"
+            }
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/gis/print/job/{jobId}": {
+      "get": {
+        "summary": "Get print job status",
+        "description": "Returns the status of a single print job and the output file URL once it finishes. Returns immediately, so it is safe inside a Do until loop.",
+        "operationId": "GetPrintJobStatus",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Job identifier returned by Submit print jobs.",
+            "x-ms-summary": "Job ID",
+            "x-ms-url-encoding": "single"
+          },
+          {
+            "name": "taskUrl",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Print task URL returned by Submit print jobs.",
+            "x-ms-summary": "Task URL"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/JobStatusResponse"
+            }
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/gis/print/workorder/grid/index": {
+      "post": {
+        "summary": "Print the index map",
+        "description": "Prints a single overview sheet showing the proposed main, the grid cells, the page labels, and which cells will print.",
+        "operationId": "PrintIndexMap",
+        "x-ms-visibility": "advanced",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GridRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/gis/print/layouts": {
+      "get": {
+        "summary": "List portal layouts",
+        "description": "Lists the layout items available for printing.",
+        "operationId": "ListLayouts",
+        "x-ms-visibility": "advanced",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/gis/print/layers": {
+      "get": {
+        "summary": "List map service layers",
+        "description": "Lists the Material View layers with their IDs, parents and scale limits.",
+        "operationId": "ListLayers",
+        "x-ms-visibility": "advanced",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/gis/print/layout/frame": {
+      "get": {
+        "summary": "Get layout map frame",
+        "description": "Returns the map frame size of a layout and the resulting grid cell size at a given scale.",
+        "operationId": "GetLayoutFrame",
+        "x-ms-visibility": "advanced",
+        "parameters": [
+          {
+            "name": "layoutItemId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "x-ms-summary": "Layout item ID"
+          },
+          {
+            "name": "scale",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "x-ms-summary": "Scale"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "operationId": "HealthCheck",
+        "x-ms-visibility": "internal",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "Operation Failed."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GridRequest": {
+      "type": "object",
+      "required": [
+        "workOrderId"
+      ],
+      "properties": {
+        "workOrderId": {
+          "type": "string",
+          "title": "Work order ID",
+          "description": "Work order identifier, for example 1513700.",
+          "x-ms-summary": "Work order ID",
+          "x-ms-visibility": "important"
+        },
+        "dryRun": {
+          "type": "boolean",
+          "title": "Dry run",
+          "description": "True returns the grid without printing.",
+          "default": true,
+          "x-ms-summary": "Dry run",
+          "x-ms-visibility": "important"
+        },
+        "scale": {
+          "type": "number",
+          "title": "Scale",
+          "description": "Map scale. 480 is forty scale. Cell size and printed extent both derive from this.",
+          "default": 480,
+          "x-ms-summary": "Scale",
+          "x-ms-visibility": "important"
+        },
+        "bufferFeet": {
+          "type": "number",
+          "title": "Buffer (feet)",
+          "description": "Distance around the proposed main used to decide which cells print.",
+          "default": 50,
+          "x-ms-summary": "Buffer (feet)",
+          "x-ms-visibility": "important"
+        },
+        "matchlineGraphics": {
+          "type": "boolean",
+          "title": "Draw match lines",
+          "description": "Draw match line labels at the frame edges.",
+          "default": true,
+          "x-ms-summary": "Draw match lines",
+          "x-ms-visibility": "important"
+        },
+        "titleblockGraphics": {
+          "type": "boolean",
+          "title": "Draw title block text",
+          "description": "Draw town code, sheet and page inside the map frame.",
+          "default": true,
+          "x-ms-summary": "Draw title block text",
+          "x-ms-visibility": "important"
+        },
+        "matchlineInset": {
+          "type": "number",
+          "title": "Match line inset",
+          "description": "Inset from the frame edge as a fraction of the cell.",
+          "default": 0.008,
+          "x-ms-summary": "Match line inset",
+          "x-ms-visibility": "advanced"
+        },
+        "titleblockOffset": {
+          "type": "number",
+          "title": "Title block offset",
+          "description": "Offset from the frame corner as a fraction of the cell.",
+          "default": 0.03,
+          "x-ms-summary": "Title block offset",
+          "x-ms-visibility": "advanced"
+        },
+        "layoutItemId": {
+          "type": "string",
+          "title": "Layout item ID",
+          "description": "Portal layout item. Defaults to the Forty Scale Maps Layout.",
+          "default": "1adfd94dd6aa418096967f39d1f67470",
+          "x-ms-summary": "Layout item ID",
+          "x-ms-visibility": "advanced"
+        },
+        "layoutTemplate": {
+          "type": "string",
+          "title": "Layout template",
+          "default": "MAP_ONLY",
+          "x-ms-summary": "Layout template",
+          "x-ms-visibility": "advanced"
+        },
+        "mapFrameWidthInches": {
+          "type": "number",
+          "title": "Map frame width (inches)",
+          "description": "Overrides the width read from the layout.",
+          "x-ms-summary": "Map frame width (inches)",
+          "x-ms-visibility": "advanced"
+        },
+        "mapFrameHeightInches": {
+          "type": "number",
+          "title": "Map frame height (inches)",
+          "description": "Overrides the height read from the layout.",
+          "x-ms-summary": "Map frame height (inches)",
+          "x-ms-visibility": "advanced"
+        },
+        "visibleLayers": {
+          "type": "array",
+          "title": "Visible layers",
+          "description": "Map service sublayer IDs to draw. Defaults to 49 and 54.",
+          "items": {
+            "type": "integer"
+          },
+          "x-ms-summary": "Visible layers",
+          "x-ms-visibility": "advanced"
+        },
+        "definitionLayerId": {
+          "type": "integer",
+          "title": "Definition layer ID",
+          "description": "Layer that receives the work order filter.",
+          "default": 54,
+          "x-ms-summary": "Definition layer ID",
+          "x-ms-visibility": "advanced"
+        },
+        "format": {
+          "type": "string",
+          "title": "Format",
+          "default": "Portable Document Format (PDF)",
+          "enum": [
+            "Portable Document Format (PDF)",
+            "32-bit Portable Network Graphics (PNG32)",
+            "8-bit Portable Network Graphics (PNG8)",
+            "Joint Photographic Experts Group (JPG)",
+            "Tag Image File Format (TIFF)"
+          ],
+          "x-ms-summary": "Format",
+          "x-ms-visibility": "advanced"
+        },
+        "dpi": {
+          "type": "integer",
+          "title": "DPI",
+          "default": 300,
+          "x-ms-summary": "DPI",
+          "x-ms-visibility": "advanced"
+        },
+        "maxCells": {
+          "type": "integer",
+          "title": "Maximum pages",
+          "description": "Safety guard on the number of pages printed.",
+          "default": 30,
+          "x-ms-summary": "Maximum pages",
+          "x-ms-visibility": "advanced"
+        },
+        "onlyCells": {
+          "type": "array",
+          "title": "Only these pages",
+          "description": "Print only these cell labels, for example D4 and D5.",
+          "items": {
+            "type": "string"
+          },
+          "x-ms-summary": "Only these pages",
+          "x-ms-visibility": "advanced"
+        }
+      }
+    },
+    "TownCodeResponse": {
+      "type": "object",
+      "properties": {
+        "workOrderId": {
+          "type": "string",
+          "x-ms-summary": "Work order ID"
+        },
+        "townCode": {
+          "type": "string",
+          "x-ms-summary": "Town code"
+        },
+        "town": {
+          "type": "string",
+          "x-ms-summary": "Town"
+        },
+        "division": {
+          "type": "string",
+          "x-ms-summary": "Division"
+        },
+        "townCount": {
+          "type": "integer",
+          "x-ms-summary": "Town count"
+        }
+      }
+    },
+    "GridResponse": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean",
+          "x-ms-summary": "Dry run"
+        },
+        "estimatedMinutes": {
+          "type": "number",
+          "x-ms-summary": "Estimated minutes"
+        },
+        "grid": {
+          "type": "object",
+          "properties": {
+            "workOrderId": {
+              "type": "string",
+              "x-ms-summary": "Work order ID"
+            },
+            "featureCount": {
+              "type": "integer",
+              "x-ms-summary": "Feature count"
+            },
+            "scale": {
+              "type": "number",
+              "x-ms-summary": "Scale"
+            },
+            "cellWidthFeet": {
+              "type": "number",
+              "x-ms-summary": "Cell width (feet)"
+            },
+            "cellHeightFeet": {
+              "type": "number",
+              "x-ms-summary": "Cell height (feet)"
+            },
+            "rows": {
+              "type": "integer",
+              "x-ms-summary": "Rows"
+            },
+            "cols": {
+              "type": "integer",
+              "x-ms-summary": "Columns"
+            },
+            "totalCells": {
+              "type": "integer",
+              "x-ms-summary": "Total cells"
+            },
+            "intersectingCells": {
+              "type": "integer",
+              "x-ms-summary": "Pages to print"
+            },
+            "frameSource": {
+              "type": "string",
+              "x-ms-summary": "Frame source"
+            }
+          }
+        }
+      }
+    },
+    "SubmitResponse": {
+      "type": "object",
+      "properties": {
+        "workOrderId": {
+          "type": "string",
+          "x-ms-summary": "Work order ID"
+        },
+        "townCode": {
+          "type": "string",
+          "x-ms-summary": "Town code"
+        },
+        "taskUrl": {
+          "type": "string",
+          "x-ms-summary": "Task URL"
+        },
+        "submitted": {
+          "type": "integer",
+          "x-ms-summary": "Jobs submitted"
+        },
+        "failed": {
+          "type": "integer",
+          "x-ms-summary": "Jobs failed"
+        },
+        "jobs": {
+          "type": "array",
+          "x-ms-summary": "Jobs",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cell": {
+                "type": "string",
+                "x-ms-summary": "Page"
+              },
+              "jobId": {
+                "type": "string",
+                "x-ms-summary": "Job ID"
+              },
+              "status": {
+                "type": "string",
+                "x-ms-summary": "Status"
+              },
+              "error": {
+                "type": "string",
+                "x-ms-summary": "Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "JobStatusResponse": {
+      "type": "object",
+      "properties": {
+        "jobId": {
+          "type": "string",
+          "x-ms-summary": "Job ID"
+        },
+        "jobStatus": {
+          "type": "string",
+          "x-ms-summary": "Job status"
+        },
+        "isComplete": {
+          "type": "boolean",
+          "x-ms-summary": "Is complete"
+        },
+        "succeeded": {
+          "type": "boolean",
+          "x-ms-summary": "Succeeded"
+        },
+        "outputUrl": {
+          "type": "string",
+          "x-ms-summary": "Output file URL"
+        },
+        "taskUrl": {
+          "type": "string",
+          "x-ms-summary": "Task URL"
+        }
+      }
+    }
+  }
+}
